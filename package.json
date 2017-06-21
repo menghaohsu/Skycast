@@ -11,7 +11,8 @@
     "dev": "webpack-dev-server",
     "watch": "npm run build -- --watch",
     "test": "jest",
-    "start": "NODE_ENV=server nodemon server.js"
+    "start": "NODE_ENV=server nodemon server.js",
+    "postinstall": "npm run build -- -p"
   },
   "dependencies": {
     "axios": "^0.15.3",

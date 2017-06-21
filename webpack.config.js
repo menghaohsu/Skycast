@@ -24,12 +24,6 @@ module.exports = {
   module: {
     rules: [
       {
-        enforce: 'pre',
-        test: /\.js$/,
-        loader: 'eslint-loader',
-        exclude: /node_mofules/
-      },
-      {
         test: /\.json$/,
         loader: 'json-loader'
       },

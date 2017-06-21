@@ -11,7 +11,7 @@ const axios = require('axios');
 const PORT = 5050;
 const baseTemplate = fs.readFileSync('./index.html');
 const template = _.template(baseTemplate);
-const App = require('./js/App').default;
+const App = require('./js/app').default;
 const Key = require('./secretKey');
 
 const server = express();

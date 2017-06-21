@@ -12,7 +12,10 @@ const PORT = 5050;
 const baseTemplate = fs.readFileSync('./index.html');
 const template = _.template(baseTemplate);
 const App = require('./js/app').default;
-const Key = require('./secretKey');
+const Key = {
+  googleMapApi: process.env.googleMapApi,
+  darkskiApi: process.env.darkskiApi
+};
 
 const server = express();
 

@@ -1,0 +1,212 @@
+/*/*
+   Hi, this is bad CSS, you shouldn't structure your CSS this way. Structurally based CSS is a bad idea because it's inherently brittle; if you change the way your nest something you break it. I'm doing it this way because it's less typing for everyone involved to not have to type long class names
+*/
+
+* {
+  box-sizing: border-box;;
+}
+
+html {
+  font-family: Helvetica Neue, Helvetica, sans-serif;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url(/public/img/3.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #333;
+}
+
+.app > h1 {
+  color: white;
+}
+
+.landing {
+  background-color: rgba(220, 220, 220, .7);
+  padding: 15px 30px;
+  border-radius: 5px;
+}
+
+.landing > h1 {
+  color: #B10DC9;
+  font-family: Skia;
+  font-weight: normal;
+}
+
+.landing > input, .landing > form > input {
+  width: 50%;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.landing > form {
+  width: 100%;
+  min-width: 300px;
+}
+
+.landing > a, a {
+  margin-top: 15px;
+  padding: 10px 40px;
+  background-color: #3e8e41;
+  color: #fafafa;
+  border-color: transparent;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.landing > a:hover, .landing > a:focus{
+  background-color: #3e8e41;
+}
+
+.landing > a:active{
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  color: #3e8e41;
+  border-color: #3e8e41;
+}
+
+.login {
+  background-color: rgba(220, 220, 220, .7);
+  padding: 15px 30px;
+  border-radius: 5px;
+}
+
+.loginDetails > input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.login > form {
+  width: 100%;
+  min-width: 300px;
+}
+
+.login > a, #submit, .googleBtn, .searchHistoryBtn, .transferBtn {
+  margin-top: 15px;
+  padding: 10px 40px;
+  background-color: #3e8e41;
+  color: #fafafa;
+  border-color: transparent;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.submitBtn {
+  float: left;
+}
+
+.login > a:hover, .login > a:focus, #submit:hover, #submit:focus, .googleBtn:focus, .googleBtn:hover, .searchHistoryBtn:focus, .searchHistoryBtn:hover, .transferBtn:focus, .transferBtn:hover {
+  background-color: #008080;
+}
+
+.login > a:active, #submit:active, .googleBtn:active, .searchHistoryBtn:active, .transferBtn:active {
+  background-color: #3e8e41;
+}
+
+.register {
+  background-color: rgba(220, 220, 220, .7);
+  padding: 15px 30px;
+  border-radius: 5px;
+}
+
+.registerDetails > input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.register > form {
+  width: 100%;
+  min-width: 300px;
+}
+
+.register > a, {
+  margin-top: 15px;
+  padding: 10px 40px;
+  background-color: #3e8e41;
+  color: #fafafa;
+  border-color: transparent;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.register > a:hover, .register > a:focus {
+  background-color: #666;
+}
+
+.register > a:active{
+  background-color: #fafafa;
+  color: #3e8e41;
+  border-color: #333;
+}
+
+.details {
+  position: absolute;
+  top: 100px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  overflow-y: scroll;
+  background-color: rgba(220, 220, 220, .8);
+  padding: 15px 30px;
+  border-radius: 5px;
+}
+
+.searchHistory {
+  background-color: rgba(220, 220, 220, .7);
+  padding: 15px 30px;
+  border-radius: 5px;
+}
+
+pre {
+  text-align: left;
+}
+
+header > input {
+  min-width: 250px;
+  max-width: 350px;
+  width: 33%;
+  padding: 4px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.custon-form {
+  margin-top: 20px !important;
+}
+
+.search .show-card > section > img[alt], .loading {
+  -webkit-animation: spin 4s infinite linear;
+  -moz-animation: spin 4s infinite linear;
+  animation: spin 4s infinite linear;
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.search-block {
+  margin-top: 200px;
+}

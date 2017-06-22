@@ -62,7 +62,7 @@ class Header extends React.Component {
               <span className='icon-bar' />
               <span className='icon-bar' />
             </button>
-            <Link to='/' className='navbar-brand' >Skycast</Link>
+            <a href='https://darksky.net/forecast/40.757,-73.5814/us12/en' className='navbar-brand' >Skycast@ power by dark sky</a>
           </div>
           <div id='navbar' className='navbar-collapse collapse'>
             <ul className='nav navbar-nav navbar-right'>

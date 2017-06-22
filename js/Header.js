@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setSearchTerm } from './actionCreatetors';
+import { setSearchTerm, submitSearch } from './actionCreatetors';
 import { Link } from 'react-router';
 import { auth } from '../firebase';
 
@@ -32,6 +32,9 @@ class Header extends React.Component {
 
   handleSearchSubmit (event) {
     event.preventDefault();
+
+    this.props.dispatch(submitSearch());
+
     this.context.router.transitionTo({
       pathname: `/search`,
       query: {'searchTerm': this.props.searchTerm}
@@ -63,7 +66,7 @@ class Header extends React.Component {
           </div>
           <div id='navbar' className='navbar-collapse collapse'>
             <ul className='nav navbar-nav navbar-right'>
-              <li className='active'><Link to='/'>Home</Link></li>
+              <li className=''><Link to='/'>Home</Link></li>
               {!currentUser && <li><Link to='/login'>Login</Link></li>}
               {currentUser && <li><Link to='/' onClick={() => auth.signOut()}>Logout</Link></li>}
               {!currentUser && <li><Link to='/register'>Register</Link></li>}

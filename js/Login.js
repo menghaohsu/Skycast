@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { auth, googleAuthProvider } from '../firebase';
+import { auth, googleAuthProvider, facebookAuthProvider, twitterAuthProvider, githubAuthProvider } from '../firebase';
 import Header from './Header';
 
 class Login extends React.Component {
@@ -38,15 +38,15 @@ class Login extends React.Component {
         <Header />
         <form onSubmit={this.handleSubmit}>
           <div className='loginDetails'>
-            Email:
             <input value={this.state.email} onChange={this.handleInputChange} type='email' placeholder='Email' /><br />
-            Password:
             <input value={this.state.password} onChange={this.handleInputChange} type='password' placeholder='Password' /><br />
           </div>
-          <input type='submit' value='Login' className='submitBtn' id='submit' />
+          <br />
+          <input type='submit' className='btn btn-block btn-primary' value='login' />
+          <Link className='btn btn-warning btn-block' to='/Register'>Register</Link>
         </form>
-        <Link to='/Register'>Register</Link><br />
-        <button className='googleBtn' onClick={() => {
+        <hr />
+        <button className='btn btn-block btn-danger' onClick={() => {
           auth.signInWithPopup(googleAuthProvider)
           .then(() => {
             this.context.router.transitionTo('/');
@@ -55,6 +55,36 @@ class Login extends React.Component {
           });
         }}>
         Login with Google account
+        </button>
+        <button className='btn btn-block btn-success' onClick={() => {
+          auth.signInWithPopup(twitterAuthProvider)
+          .then(() => {
+            this.context.router.transitionTo('/');
+          }).catch((error) => {
+            console.log(error);
+          });
+        }}>
+        Login with Twitter account
+        </button>
+        <button className='btn btn-block btn-info' onClick={() => {
+          auth.signInWithPopup(facebookAuthProvider)
+          .then(() => {
+            this.context.router.transitionTo('/');
+          }).catch((error) => {
+            console.log(error);
+          });
+        }}>
+        Login with Facebook account
+        </button>
+        <button className='btn btn-block btn-default' onClick={() => {
+          auth.signInWithPopup(githubAuthProvider)
+          .then(() => {
+            this.context.router.transitionTo('/');
+          }).catch((error) => {
+            console.log(error);
+          });
+        }}>
+        Login with GitHub account
         </button>
       </div>
     );

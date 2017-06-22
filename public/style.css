@@ -90,27 +90,8 @@ html {
   min-width: 300px;
 }
 
-.login > a, #submit, .googleBtn, .searchHistoryBtn, .transferBtn {
-  margin-top: 15px;
-  padding: 10px 40px;
-  background-color: #3e8e41;
-  color: #fafafa;
-  border-color: transparent;
-  display: inline-block;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
 .submitBtn {
   float: left;
-}
-
-.login > a:hover, .login > a:focus, #submit:hover, #submit:focus, .googleBtn:focus, .googleBtn:hover, .searchHistoryBtn:focus, .searchHistoryBtn:hover, .transferBtn:focus, .transferBtn:hover {
-  background-color: #008080;
-}
-
-.login > a:active, #submit:active, .googleBtn:active, .searchHistoryBtn:active, .transferBtn:active {
-  background-color: #3e8e41;
 }
 
 .register {
@@ -209,4 +190,12 @@ header > input {
 
 .search-block {
   margin-top: 200px;
+}
+
+.switch {
+  display: inline-block;
+}
+
+.switchBtn {
+  float: right;
 }

@@ -47,14 +47,11 @@ class Register extends React.Component {
         <Header />
         <form onSubmit={this.handleSubmit}>
           <div className='registerDetails'>
-            <h4>Email:</h4>
             <input value={this.state.email} onChange={this.handleInputChange} type='email' placeholder='Email' /><br /><br />
-            <h4>Password:</h4>
             <input value={this.state.password} onChange={this.handleInputChange} type='password' placeholder='Password' /><br /><br />
-            <h4>Confrim Your Password:</h4>
             <input value={this.state.confrimPassword} onChange={this.handleInputChange} type='password' placeholder='Confrim Password' /><br />
-          </div>
-          <input type='submit' value='Register' id='submit' />
+          </div><br />
+          <input className='btn btn-block btn-primary' type='submit' value='Register' id='submit' />
         </form>
       </div>
     );

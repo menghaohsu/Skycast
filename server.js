@@ -13,8 +13,8 @@ const baseTemplate = fs.readFileSync('./index.html');
 const template = _.template(baseTemplate);
 const App = require('./js/app').default;
 const Key = {
-  googleMapApi: process.env.googleMapApi,
-  darkskiApi: process.env.darkskiApi
+  googleMapApi: process.env.googleMapApi || require('./secretKey').googleMapApi,
+  darkskiApi: process.env.darkskiApi || require('./secretKey').darkskiApi
 };
 
 const server = express();

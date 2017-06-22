@@ -55,7 +55,7 @@ const Landing = React.createClass({
     let currentWeather;
     if (latitude && longitude) {
       const location = {'lat': latitude, 'lng': longitude};
-      currentWeather = <ShowCard location={location} />;
+      currentWeather = <ShowCard location={location} searchTerm='' />;
     } else currentWeather = <img className='loading' style={{ width: '15%' }} src='/public/img/loading.png' alt='loading indicator' />;
 
     return (

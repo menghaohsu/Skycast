@@ -47,7 +47,7 @@ const SearchHistory = React.createClass({
     return (
       <div className='searchHistory'>
         <Header />
-        { map(searchHistory, (value, key) => <div key={key}><button className='searchHistoryBtn' onClick={this.handleSearchSubmit} value={value}>{value}</button><br /></div>)}
+        { map(searchHistory, (value, key) => <div key={key}><button className='btn btn-success btn-block' onClick={this.handleSearchSubmit} value={value}>{value}</button><br /></div>)}
       </div>
     );
   }

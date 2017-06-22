@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
-const { shape, number, bool } = React.PropTypes;
+const { shape, number, bool, string } = React.PropTypes;
 
 const ShowCard = React.createClass({
   propTypes: {
@@ -10,7 +10,8 @@ const ShowCard = React.createClass({
       lat: number,
       lng: number
     }),
-    isSubmitted: bool
+    isSubmitted: bool,
+    searchTerm: string
   },
   getInitialState () {
     return {
@@ -81,8 +82,8 @@ const ShowCard = React.createClass({
       weather =
         <div>
           <br />
-          {this.state.hourlyOrWeekly && <div className='swtich'><h3>Daily Report</h3><button className='btn btn-primary switchBtn' onClick={this.transfer}>Switch to weekly</button></div>}
-          {!this.state.hourlyOrWeekly && <div className='swtich'><h3>Weekly Report</h3><button className='btn btn-primary switchBtn' onClick={this.transfer}>Switch to daily</button></div>}
+          {this.state.hourlyOrWeekly && <div className='swtich'><h3>{`${this.props.searchTerm.charAt(0).toUpperCase()}${this.props.searchTerm.slice(1)}`} Daily Report</h3><button className='btn btn-primary switchBtn' onClick={this.transfer}>Switch to weekly</button></div>}
+          {!this.state.hourlyOrWeekly && <div className='swtich'><h3>{`${this.props.searchTerm.charAt(0).toUpperCase()}${this.props.searchTerm.slice(1)}`} Weekly Report</h3><button className='btn btn-primary switchBtn' onClick={this.transfer}>Switch to daily</button></div>}
           <BootstrapTable data={data} striped hover>
             <TableHeaderColumn dataField='image' dataAlign='center' dataFormat={this.imageFormatter} width='10'>Weather</TableHeaderColumn>
             <TableHeaderColumn dataField='cloudCover' dataAlign='center' width='100'>Cloud Cover</TableHeaderColumn>

@@ -102,8 +102,7 @@ const Search = React.createClass({
     if (this.state.googleMapData.results) {
       geometry =
         <div>
-          <h1>{this.props.location.query.searchTerm.toUpperCase()}</h1>
-          <ShowCard location={this.state.googleMapData.results[0].geometry.location} isSubmitted={this.props.isSubmitted} />
+          <ShowCard location={this.state.googleMapData.results[0].geometry.location} isSubmitted={this.props.isSubmitted} searchTerm={this.props.searchTerm} />
         </div>;
     } else {
       geometry = <img style={{ width: '15%' }} src='/public/img/loading.png' alt='loading indicator' />;

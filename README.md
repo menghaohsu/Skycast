@@ -26,10 +26,10 @@ A generic RESTful single page application. It leverages weather API and geolocat
 
 -[Webpack](https://webpack.github.io/)
   * For bundling frontend JS codes including the following loader:
-  - Json loader
-  - Babel loader
-  - CSS loader
-  - ESLint loader
+    * Json loader
+    * Babel loader
+    * CSS loader
+    * ESLint loader
 
 -[Firebase](https://firebase.google.com/)
   * For user to store there search history.

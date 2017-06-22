@@ -66,10 +66,12 @@ const Landing = React.createClass({
             <div className='col-lg-6 col-md-6 search-block'>
               {currentUser && <img className='img-circle' src={currentUser.photoURL} alt={currentUser.displayName} width='140' height='140' />}
               {currentUser && <h3>Hi! {currentUser.displayName}</h3>}
+              {!currentUser && <img className='img-circle' src='/public/img/blue-head.jpg' alt='Anonymous user' width='140' height='140' />}
+              {!currentUser && <h3>Hi! Anonymous</h3>}
               <h2>Search Weather by Location</h2>
               <form onSubmit={this.handleSearchSubmit}>
                 <br />
-                <input style={ {width: "65%" } } onChange={this.handleSearchTermChange} value={this.props.searchTerm} type='text' placeholder='Ex. New York' />
+                <input style={{ width: '65%' }} onChange={this.handleSearchTermChange} value={this.props.searchTerm} type='text' placeholder='Ex. New York' />
               </form>
             </div>
             <div className='col-lg-6 col-md-5'>

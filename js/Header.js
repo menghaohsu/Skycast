@@ -50,6 +50,7 @@ class Header extends React.Component {
           onChange={this.handleSearchTermChange}
           value={this.props.searchTerm}
           type='text' placeholder='Search'
+          required
         />;
     }
     return (
@@ -66,7 +67,7 @@ class Header extends React.Component {
           </div>
           <div id='navbar' className='navbar-collapse collapse'>
             <ul className='nav navbar-nav navbar-right'>
-              <li className=''><Link to='/'>Home</Link></li>
+              <li><Link to='/'>Home</Link></li>
               {!currentUser && <li><Link to='/login'>Login</Link></li>}
               {currentUser && <li><Link to='/' onClick={() => auth.signOut()}>Logout</Link></li>}
               {!currentUser && <li><Link to='/register'>Register</Link></li>}

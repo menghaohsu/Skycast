@@ -4,28 +4,19 @@ import { connect } from 'react-redux';
 import map from 'lodash/map';
 import { auth, database } from '../firebase';
 import Header from './Header';
-import ShowCard from './ShowCard';
+import SearchResult from './SearchResult';
 import { setSearchTerm, resetSearchStatus } from './actionCreatetors';
 
-const { string, shape, func, bool } = React.PropTypes;
+class Search extends React.Component {
+  constructor (props) {
+    super(props);
 
-const Search = React.createClass({
-  propTypes: {
-    location: shape({
-      query: shape({
-        searchTerm: string
-      })
-    }),
-    dispatch: func,
-    searchTerm: string,
-    isSubmitted: bool
-  },
-  getInitialState () {
-    return {
+    this.state = {
       googleMapData: {},
       currentUser: null
     };
-  },
+  }
+
   componentWillReceiveProps (nextProps) {
     if (nextProps.isSubmitted) {
       nextProps.dispatch(resetSearchStatus());
@@ -61,7 +52,8 @@ const Search = React.createClass({
         })
         .catch((error) => console.error('axios error', error));
     }
-  },
+  }
+
   componentDidMount () {
     this.props.dispatch(setSearchTerm(this.props.location.query.searchTerm));
 
@@ -95,14 +87,15 @@ const Search = React.createClass({
         }
       })
       .catch((error) => console.error('axios error', error));
-  },
+  }
+
   render () {
     let geometry;
 
     if (this.state.googleMapData.results) {
       geometry =
         <div>
-          <ShowCard location={this.state.googleMapData.results[0].geometry.location} isSubmitted={this.props.isSubmitted} searchTerm={this.props.searchTerm} />
+          <SearchResult location={this.state.googleMapData.results[0].geometry.location} isSubmitted={this.props.isSubmitted} />
         </div>;
     } else {
       geometry = <img style={{ width: '15%' }} src='/public/img/loading.png' alt='loading indicator' />;
@@ -116,7 +109,20 @@ const Search = React.createClass({
       </div>
     );
   }
-});
+}
+
+const { string, shape, func, bool } = React.PropTypes;
+
+Search.propTypes = {
+  location: shape({
+    query: shape({
+      searchTerm: string
+    })
+  }),
+  dispatch: func,
+  searchTerm: string,
+  isSubmitted: bool
+};
 
 const mapStateToProps = (state) => {
   return {

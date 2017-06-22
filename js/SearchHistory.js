@@ -4,36 +4,29 @@ import { database } from '../firebase';
 import { setSearchTerm } from './actionCreatetors';
 import Header from './Header';
 import map from 'lodash/map';
-const { shape, string, object, func } = React.PropTypes;
 
-const SearchHistory = React.createClass({
-  contextTypes: {
-    router: object
-  },
-  propTypes: {
-    location: shape({
-      query: shape({
-        user: string
-      })
-    }),
-    searchTerm: string,
-    dispatch: func
-  },
-  getInitialState () {
+class SearchHistory extends React.Component {
+  constructor (props) {
+    super(props);
+
     let q = this.props.location.query.user;
     if (typeof q === 'string') q = JSON.parse(q);
 
-    return {
+    this.state = {
       searchHistoryRef: database.ref(`/allSearchHistory/${q.uid}/userSearchHistory`),
       currentUser: q,
       searchHistory: {}
     };
-  },
+
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+  }
+
   componentDidMount () {
     this.state.searchHistoryRef.on('value', (snapshot) => {
       this.setState({ searchHistory: snapshot.val() });
     });
-  },
+  }
+
   handleSearchSubmit (event) {
     event.preventDefault();
     this.props.dispatch(setSearchTerm(event.target.value));
@@ -41,7 +34,8 @@ const SearchHistory = React.createClass({
       pathname: `/search`,
       query: {'searchTerm': event.target.value}
     });
-  },
+  }
+
   render () {
     const { searchHistory } = this.state;
     return (
@@ -51,7 +45,23 @@ const SearchHistory = React.createClass({
       </div>
     );
   }
-});
+}
+
+const { shape, string, object, func } = React.PropTypes;
+
+SearchHistory.contextTypes = {
+  router: object
+};
+
+SearchHistory.propTypes = {
+  location: shape({
+    query: shape({
+      user: string
+    })
+  }),
+  searchTerm: string,
+  dispatch: func
+};
 
 const mapStateToProps = (state) => {
   return {

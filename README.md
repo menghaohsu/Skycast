@@ -1,27 +1,43 @@
 # A Weather Forecast App
 
-https://paulforecast.herokuapp.com/
+Website URL: https://paulforecast.herokuapp.com/
 
-A generic RESTful APP leverage a weather API (https://developer.forecast.io) combined with a geolocation API (https://developers.google.com/maps) to allow users to retrieve current as well as historic data about any location that the users search.
-
-## Prerequisite
-- Node.js
-- npm
-- Firebase Realtime Database
+A generic RESTful single page application. It leverages weather API and geolocation API to allow users to know the daily or weekly weather at thier current location quickly and their past search history. The user profile and each individual search history is persisted in a cloud database.
 
 ## Technology
 
--[ReactJS] (https://facebook.github.io/react/)
+-[ReactJS](https://facebook.github.io/react/)
+  * For the view component of the app.
 
--[React Router] (https://github.com/rackt/react-router)
+-[JSX](https://facebook.github.io/react/docs/jsx-in-depth.html)
+  * For writing readable React codes.
 
--[Redux.js] (http://redux.js.org/)
+-[React Router](https://github.com/rackt/react-router)
+  * For creating collection of navigational components.
 
--[Express.js] (http://expressjs.com/)
+-[Redux.js](http://redux.js.org/)
+  * For user to save their searchterm persistenly.
 
--[Babel] (https://babeljs.io/)
+-[Express.js](http://expressjs.com/)
+  * For building a MVC architecture on the server side.
 
--[Firebase] (https://firebase.google.com/) => Implement OAuth login with Google, Facebook, Twitter and Github
+-[Babel](https://babeljs.io/)
+  * For transfering es6 code to browser readable.
 
+-[Webpack](https://webpack.github.io/)
+  * For bundling frontend JS codes including the following loader:
+  - Json loader
+  - Babel loader
+  - CSS loader
+  - ESLint loader
 
-***[Note] All required packages and versions are listed in `package.json`***
+-[Firebase](https://firebase.google.com/)
+  * For user to store there search history.
+  * Implementing OAuth login with Google, Facebook, Twitter and Github.
+
+-[Eslint](http://eslint.org/)
+  * Using [semistandard](https://github.com/Flet/semistandard), a wrapper around a pre-configured eslint, to keep code cleaned and styled.
+
+-[Server Side Rendering]
+  * A faster way to rendering your pages without downloading JS in brouswer.
+

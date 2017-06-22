@@ -2,24 +2,20 @@ import React from 'react';
 import axios from 'axios';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
-const { shape, number, bool, string } = React.PropTypes;
+class SearchResult extends React.Component {
+  constructor (props) {
+    super(props);
 
-const ShowCard = React.createClass({
-  propTypes: {
-    location: shape({
-      lat: number,
-      lng: number
-    }),
-    isSubmitted: bool,
-    searchTerm: string
-  },
-  getInitialState () {
-    return {
+    this.state = {
       weatherData: {},
       hourlyOrWeekly: true,
       originalData: true
     };
-  },
+
+    this.transfer = this.transfer.bind(this);
+    this.imageFormatter = this.imageFormatter.bind(this);
+  }
+
   componentWillReceiveProps () {
     if (this.props.location && this.props.isSubmitted) {
       axios.get(`/getWeather/${this.props.location.lat}/${this.props.location.lng}`)
@@ -28,7 +24,8 @@ const ShowCard = React.createClass({
         })
         .catch((error) => console.error('axios error', error));
     }
-  },
+  }
+
   componentDidMount () {
     if (this.props.location) {
       axios.get(`/getWeather/${this.props.location.lat}/${this.props.location.lng}`)
@@ -37,14 +34,17 @@ const ShowCard = React.createClass({
         })
         .catch((error) => console.error('axios error', error));
     }
-  },
+  }
+
   imageFormatter (cell) {
     return (<img style={{width: 50}} src={cell} />);
-  },
+  }
+
   transfer () {
     this.setState({hourlyOrWeekly: !this.state.hourlyOrWeekly});
     this.setState({originalData: false});
-  },
+  }
+
   render () {
     let weather;
     if (this.state.weatherData.timezone) {
@@ -82,8 +82,8 @@ const ShowCard = React.createClass({
       weather =
         <div>
           <br />
-          {this.state.hourlyOrWeekly && <div className='swtich'><h3>{`${this.props.searchTerm.charAt(0).toUpperCase()}${this.props.searchTerm.slice(1)}`} Daily Report</h3><button className='btn btn-primary switchBtn' onClick={this.transfer}>Switch to weekly</button></div>}
-          {!this.state.hourlyOrWeekly && <div className='swtich'><h3>{`${this.props.searchTerm.charAt(0).toUpperCase()}${this.props.searchTerm.slice(1)}`} Weekly Report</h3><button className='btn btn-primary switchBtn' onClick={this.transfer}>Switch to daily</button></div>}
+          {this.state.hourlyOrWeekly && <div className='swtich'><h3>Daily Report</h3><button className='btn btn-primary switchBtn' onClick={this.transfer}>Switch to weekly</button></div>}
+          {!this.state.hourlyOrWeekly && <div className='swtich'><h3>Weekly Report</h3><button className='btn btn-primary switchBtn' onClick={this.transfer}>Switch to daily</button></div>}
           <BootstrapTable data={data} striped hover>
             <TableHeaderColumn dataField='image' dataAlign='center' dataFormat={this.imageFormatter} width='10'>Weather</TableHeaderColumn>
             <TableHeaderColumn dataField='cloudCover' dataAlign='center' width='100'>Cloud Cover</TableHeaderColumn>
@@ -103,6 +103,17 @@ const ShowCard = React.createClass({
       </div>
     );
   }
-});
+}
 
-export default ShowCard;
+const { shape, number, bool, string } = React.PropTypes;
+
+SearchResult.propTypes = {
+  location: shape({
+    lat: number,
+    lng: number
+  }),
+  isSubmitted: bool,
+  searchTerm: string
+};
+
+export default SearchResult;

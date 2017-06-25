@@ -2,6 +2,8 @@
 
 Website URL: https://paulforecast.herokuapp.com/
 
+## Please allow the app to get your location in order to show your local weather report on your home page!!! 
+
 A generic RESTful single page application. It leverages weather API and geolocation API to allow users to know the daily or weekly weather at thier current location quickly and their past search history. The user profile and each individual search history is persisted in a cloud database.
 
 ## Technology
